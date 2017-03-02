@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["bwt",""],["ibwt",""],["suffix_array",""]],"struct":[["BitsVec","A vector to hold values that have a known bit range."],["FMIndex",""],["Trie",""]],"trait":[["ReprUsize","A trait for representing types as `usize` (useful for enums)."]]});
