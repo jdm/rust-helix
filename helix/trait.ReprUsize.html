@@ -48,9 +48,9 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='./src/fillings/lib.rs.html#41-46' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../src/helix/bits_vec.rs.html#39-44' title='goto source code'>[src]</a></span></h1>
 <pre class='rust trait'>pub trait ReprUsize {
-    fn <a href='#tymethod.from_usize' class='fnname'>from_usize</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; Self;
+    fn <a href='#tymethod.from_usize' class='fnname'>from_usize</a>(_: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; Self;
     fn <a href='#tymethod.into_usize' class='fnname'>into_usize</a>(self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>;
 }</pre><div class='docblock'><p>A trait for representing types as <code>usize</code> (useful for enums).</p>
 
@@ -58,6 +58,8 @@
 This is implemented for integer types, <code>bool</code> and <code>char</code> by default.</p>
 
 <pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="ident">helix</span>::<span class="ident">ReprUsize</span>;
+
 <span class="kw">enum</span> <span class="ident">Foo</span> {
     <span class="ident">One</span>,
     <span class="ident">Two</span>,
@@ -82,7 +84,7 @@ This is implemented for integer types, <code>bool</code> and <code>char</code> b
 </div>
             <h2 id='required-methods'>Required Methods</h2>
             <div class='methods'>
-        <h3 id='tymethod.from_usize' class='method'><span id='from_usize.v' class='invisible'><code>fn <a href='#tymethod.from_usize' class='fnname'>from_usize</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; Self</code></span></h3><div class='docblock'><p>Convert the value back from <code>usize</code></p>
+        <h3 id='tymethod.from_usize' class='method'><span id='from_usize.v' class='invisible'><code>fn <a href='#tymethod.from_usize' class='fnname'>from_usize</a>(_: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; Self</code></span></h3><div class='docblock'><p>Convert the value back from <code>usize</code></p>
 </div><h3 id='tymethod.into_usize' class='method'><span id='into_usize.v' class='invisible'><code>fn <a href='#tymethod.into_usize' class='fnname'>into_usize</a>(self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></code></span></h3><div class='docblock'><p>Convert the value into an <code>usize</code></p>
 </div></div>
         <h2 id='implementors'>Implementors</h2>
@@ -100,7 +102,7 @@ This is implemented for integer types, <code>bool</code> and <code>char</code> b
 <li><code>impl ReprUsize for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code></li>
 <li><code>impl ReprUsize for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a></code></li>
 </ul><script type="text/javascript" async
-                         src="../implementors/fillings/trait.ReprUsize.js">
+                         src="../implementors/helix/trait.ReprUsize.js">
                  </script></section>
     <section id='search' class="content hidden"></section>
 
