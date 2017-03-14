@@ -18,7 +18,7 @@ fn induced_sort_large<T>(input: &[T], approx_sa: &mut [u32],
         }
 
         let j = (byte - 1) as usize;
-        if !type_map.get(j).unwrap() {
+        if !type_map[j] {
             continue    // only the L-types
         }
 
@@ -40,7 +40,7 @@ fn induced_sort_small<T>(input: &[T], approx_sa: &mut [u32],
         }
 
         let j = (byte - 1) as usize;
-        if type_map.get(j).unwrap() {
+        if type_map[j] {
             continue    // only the S-types
         }
 
@@ -61,8 +61,8 @@ fn is_equal_lms<T>(input: &[T], lms_map: &BitVec, j: usize, k: usize) -> bool
     }
 
     for i in 0..(length + 1) {
-        let first_lms = lms_map.get(i + j).unwrap();
-        let second_lms = lms_map.get(i + k).unwrap();
+        let first_lms = lms_map[i + j];
+        let second_lms = lms_map[i + k];
         if first_lms && second_lms && i > 0 {
             return true
         } else if (first_lms != second_lms) || (input[i + j] != input[i + k]) {
@@ -119,7 +119,7 @@ pub fn suffix_array<T>(input: &[T]) -> Vec<u32>
 
     // 1. Group the bytes into S-type or L-type (also mark LMS types)
     for i in (0..length - 1).rev() {
-        let prev_type = type_map.get(i + 1).unwrap();
+        let prev_type = type_map[i + 1];
         insert(&mut bucket_sizes, input[i]);
 
         if input[i] > input[i + 1] ||
@@ -161,7 +161,7 @@ pub fn suffix_array<T>(input: &[T]) -> Vec<u32>
         let mut vec = vec![MARKER; length + 1];
         let mut bucket_tails = bucket_tails.clone();
         for (i, byte) in input.iter().enumerate() {
-            if !lms_map.get(i).unwrap() {
+            if !lms_map[i] {
                 continue        // ignore the L and S types (for now)
             }
 
@@ -190,7 +190,7 @@ pub fn suffix_array<T>(input: &[T]) -> Vec<u32>
 
         for count in approx_sa.drain(1..) {
             let idx = if count == MARKER { length } else { count as usize };
-            if !lms_map.get(idx).unwrap() {
+            if !lms_map[idx] {
                 continue
             }
 
