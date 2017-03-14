@@ -128,6 +128,8 @@ impl FMIndex {
     /// If your input doesn't change, then it's better to get the BWT data (using `bwt` method), write it
     /// to a file and generate the index from that in the future.
     pub fn new_from_bwt(bwt_data: Vec<u8>) -> FMIndex {
+        println!("Entering constructor...");
+        let timer = ::std::time::Instant::now();
         let mut map = Vec::new();
         let mut count = vec![0u32; bwt_data.len()];
         let mut idx = 0;
@@ -139,7 +141,9 @@ impl FMIndex {
         }
 
         generate_occurrence_index(&mut map);
+        println!("Step 1: {:?}", timer.elapsed());
 
+        let timer = ::std::time::Instant::now();
         let mut lf_vec = count.clone();
         let mut lf_occ_map = map.clone();
         // generate the LF vector (just like inverting the BWT)
@@ -149,10 +153,12 @@ impl FMIndex {
             lf_occ_map[idx] += 1;
         }
 
+        println!("Step 2: {:?}", timer.elapsed());
         let mut i = lf_vec[0] as usize;
         lf_vec[0] = 0;
         let mut counter = bwt_data.len() as u32 - 1;
 
+        let timer = ::std::time::Instant::now();
         // Only difference is that we replace the LF indices with the lengths of prefix
         // from a particular position (in other words, the number of times
         // it would take us to get to the start of string).
@@ -162,6 +168,8 @@ impl FMIndex {
             i = next as usize;
             counter -= 1;
         }
+
+        println!("Step 3: {:?}", timer.elapsed());
 
         FMIndex {
             data: bwt_data,
